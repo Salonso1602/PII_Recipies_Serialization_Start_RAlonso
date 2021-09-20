@@ -34,7 +34,9 @@ namespace Recipies
 
         public void LoadFromJson(string json)
         {
-            return new Equipment(JsonSerializer.Deserialize<Equipment>(json));
+            Equipment temp = new Equipment(JsonSerializer.Deserialize<string>(json));
+            this.Description = temp.Description;
+            this.HourlyCost = temp.HourlyCost;
         }
     }
 }

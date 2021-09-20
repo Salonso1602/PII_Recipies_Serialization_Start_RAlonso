@@ -11,10 +11,17 @@ using System.Text.Json.Serialization;
 
 namespace Recipies
 {
-    public class Recipe
+    public class Recipe : IJsonConvertible
     {
         // private ArrayList steps = new ArrayList();
         public Product FinalProduct { get; set; }
+        [JsonConstructor]
+        public Recipe(){}
+        public Recipe(string json)
+        {
+            this.LoadFromJson(json);
+        }
+
 
         [JsonInclude]
         public ArrayList Steps { get; private set; } = new ArrayList();
@@ -28,6 +35,17 @@ namespace Recipies
         public void RemoveStep(Step step)
         {
             this.Steps.Remove(step);
+        }
+
+        public string ConvertToJson()
+        {
+            return JsonSerializer.Serialize<Recipe>(this);
+        }
+
+        public void LoadFromJson(string json)
+        {
+            Recipe temp = new Recipe(JsonSerializer.Deserialize<string>(json));
+            this.Steps = temp.Steps;
         }
     }
 }

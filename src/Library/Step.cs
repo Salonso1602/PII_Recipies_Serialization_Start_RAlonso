@@ -40,7 +40,11 @@ namespace Recipies
 
         public void LoadFromJson(string json)
         {
-            return new Step(JsonSerializer.Deserialize<Step>(json));
+            Step temp = new Step(JsonSerializer.Deserialize<string>(json));
+            this.Quantity = temp.Quantity;
+            this.Input = temp.Input;
+            this.Time = temp.Time;
+            this.Equipment = temp.Equipment;
         }
     }
 }
