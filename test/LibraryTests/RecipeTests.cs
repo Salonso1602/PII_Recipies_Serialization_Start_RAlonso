@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Recipies;
+using System.Globalization;
 
 namespace LibraryTests
 {
@@ -20,6 +21,7 @@ namespace LibraryTests
         [SetUp]
         public void Setup()
         {
+            System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("en-US");
         }
 
         [Test]
