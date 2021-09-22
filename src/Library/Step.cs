@@ -40,7 +40,7 @@ namespace Recipies
 
         public void LoadFromJson(string json)
         {
-            Step temp = new Step(JsonSerializer.Deserialize<string>(json));
+            Step temp = JsonSerializer.Deserialize<Step>(json);
             this.Quantity = temp.Quantity;
             this.Input = temp.Input;
             this.Time = temp.Time;

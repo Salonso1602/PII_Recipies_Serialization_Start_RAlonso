@@ -44,7 +44,7 @@ namespace Recipies
 
         public void LoadFromJson(string json)
         {
-            Recipe temp = new Recipe(JsonSerializer.Deserialize<string>(json));
+            Recipe temp = JsonSerializer.Deserialize<Recipe>(json);
             this.Steps = temp.Steps;
         }
     }
